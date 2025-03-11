@@ -2,10 +2,14 @@
 from flask import Flask, request, jsonify
 import requests
 import re
-
+from dotenv import load_dotenv
+import os
 app = Flask(__name__)
-WEATHER_API_KEY = "f381e68eb9e65d0b8390f7257285831f"
-MISTRAL_API_KEY = "MEardDjM1BcIahdzw6dX87ePPhBkNWnD"
+
+WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
+MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
+#WEATHER_API_KEY = "f381e68eb9e65d0b8390f7257285831f"
+#MISTRAL_API_KEY = "MEardDjM1BcIahdzw6dX87ePPhBkNWnD"
 
 def get_city_from_area_code(area_code):
     """Uses Mistral LLM to determine the most likely city based on area code."""
