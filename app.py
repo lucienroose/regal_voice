@@ -32,8 +32,8 @@ def get_city_from_area_code(area_code):
 
     response = requests.post(url, json=data, headers=headers)
 
-    print("🤖 Mistral API Response Status:", response.status_code)  # Debugging
-    print("📍 Mistral API Response:", response.text)  # Debugging
+    #print("Mistral API Response Status:", response.status_code) 
+    #print("Mistral API Response:", response.text)  
 
     if response.status_code == 200:
         try:
@@ -49,8 +49,8 @@ def get_weather(city):
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city},US&appid={WEATHER_API_KEY}&units=imperial"
     response = requests.get(url)
     
-    print("🌦️ OpenWeatherMap API Response Status:", response.status_code)  # Debugging
-    print("🌎 OpenWeatherMap API Response:", response.text)  # Debugging
+    #print("OpenWeatherMap API Response Status:", response.status_code)  
+    #print("OpenWeatherMap API Response:", response.text)  
 
     if response.status_code != 200:
         return None
@@ -82,10 +82,6 @@ def handle_request():
     else:
         return jsonify({"city": city, "temperature": None, "condition": "Weather data unavailable"}), 200
     
-    #if weather_data:
-     #   return jsonify(weather_data), 200, {'Content-Type': 'application/json; charset=utf-8'}
-    #else:
-    #    return jsonify({"temperature": None, "condition": "Weather data unavailable"}), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
